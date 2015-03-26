@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>1px</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r11/Stats.min.js"></script>
+		<style>
+				body {
+					margin: 0px;
+				}
+		</style>
+	</head>
+	<body onload="init()">
+		<div id="container">
+
+		<script id="vertexShader" type="x-shader/x-vertex">
+			void main()	{
+				gl_Position = vec4(position, 1.0);
+			}
+		</script>
+
+		<script id="fragmentShader" type="x-shader/x-fragment">
+			uniform vec2 resolution;
+			uniform float time;
+			uniform int count;
+
+			void main()	{
+				// -1.0 - 1.0
+				vec2 p = -1.0 + 2.0 * gl_FragCoord.xy / resolution.xy;
+				float d = distance(p, vec2(0,0));
+
+				vec4 color;
+				int n = count / 15 % 4;
+				if (n == 0) {
+					color = vec4(1.0, 0.0, 0.0, 1.0);
+				}
+				else if (n == 1) {
+					color = vec4(0.0, 1.0, 0.0, 1.0);
+				}
+				else if (n == 2) {
+					color = vec4(0.0, 0.0, 1.0, 1.0);
+				}
+				else {
+					color = vec4(0.0, 0.0, 0.0, 1.0);
+				}
+
+				if (d <= 0.01) {
+					gl_FragColor = color;
+				}
+				else {
+					gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+				}
+			}
+		</script>
+
+		<script type="text/javascript">
+			var container;
+			var camera, scene, renderer;
+			var uniforms;
+
+			function init(){
+				container = document.getElementById('container');
+
+				camera = new THREE.Camera();
+				camera.position.z = 1;
+
+				scene = new THREE.Scene();
+
+				var geometry = new THREE.PlaneBufferGeometry(2, 2);
+
+				uniforms = {
+					time: {type: "f", value: 1.0},
+					count: {type: "i", value: 0},
+					resolution: {type: "v2", value: new THREE.Vector2()}
+				};
+
+				var material = new THREE.ShaderMaterial({
+					uniforms: uniforms,
+					vertexShader: document.getElementById('vertexShader').textContent,
+					fragmentShader: document.getElementById('fragmentShader').textContent
+				});
+
+				var mesh = new THREE.Mesh(geometry, material);
+				scene.add(mesh);
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio(window.devicePixelRatio);
+				container.appendChild(renderer.domElement);
+
+				stats = new Stats();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				container.appendChild(stats.domElement);
+
+				onWindowResize();
+				window.addEventListener('resize', onWindowResize, false);
+
+				animate();
+			}
+
+			function onWindowResize( event ) {
+				renderer.setSize(200, 200);
+				uniforms.resolution.value.x = renderer.domElement.width;
+				uniforms.resolution.value.y = renderer.domElement.height;
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+
+				render();
+				stats.update();
+			}
+
+			function render() {
+				uniforms.time.value += 0.05;
+				uniforms.count.value += 1;
+				renderer.render(scene, camera);
+			}
+		</script>
+	</body>
+</html>

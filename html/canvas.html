@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>1px</title>
+</head>
+<body onload="init()">
+	<canvas id="canvas1" width="200" height="200" style="background-color:black;">
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('canvas1');
+		var ctx    = canvas.getContext('2d');
+		var count = 0;
+
+		function init(){
+			setInterval(draw, 250);
+		}
+
+		function draw() {
+			switch(count % 4) {
+			case 0:
+				ctx.fillStyle = "#ff0000";
+				break;
+			case 1:
+				ctx.fillStyle = "#00ff00";
+				break;
+			case 2:
+				ctx.fillStyle = "#0000ff";
+				break;
+			case 3:
+				ctx.fillStyle = "#000000";
+				break;
+			}
+
+			ctx.fillRect(100, 100, 1, 1);
+
+			count ++;
+		}
+	</script>
+</body>
+</html>
