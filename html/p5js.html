@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>1px - p5.js version</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.2/p5.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function setup(){
+			createCanvas(200, 200);
+			frameRate(4);
+		}
+
+		function draw() {
+			background(0);
+			var n = frameCount % 4;
+			switch(n) {
+			case 0:
+				stroke(255, 0, 0);
+				break;
+			case 1:
+				stroke(0, 255, 0);
+				break;
+			case 2:
+				stroke(0, 0, 255);
+				break;
+			case 3:
+				stroke(0, 0, 0);
+				break;
+			}
+			point(100, 100);
+		}
+	</script>
+</body>
+</html>
