@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-    screen = DefaultScreen(display);
+	screen = DefaultScreen(display);
 
 	// setup color
 	color_black = BlackPixel(display, screen);
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 	color_blue = color.pixel;
 
 	// setup window
-    root = DefaultRootWindow(display); 
+	root = DefaultRootWindow(display); 
 	w = XCreateSimpleWindow(display, root, 100, 100, 200, 200, 5, color_black, color_black);
 	XStoreName(display, w, "1px - xlib version");
 
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 					XSetForeground(display, gc, color_black);
 					break;
 			}
-	
+
 			// draw a 1px dot
 			XDrawPoint(display, w, gc, 100, 100);
 			XFlush(display);
