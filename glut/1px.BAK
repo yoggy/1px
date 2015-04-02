@@ -7,7 +7,7 @@
 // Martin Payne's Windows binaries (MSVC and MinGW)
 //   http://www.transmissionzero.co.uk/software/freeglut-devel/
 //
-// GLUTã«ã‚ˆã‚‹ã€Œæ‰‹æŠœãã€OpenGLå…¥é–€
+// GLUT‚É‚æ‚éuè”²‚«vOpenGL“ü–å
 //   http://www.wakayama-u.ac.jp/~tokoi/opengl/libglut.html
 //
 #ifdef WIN32
