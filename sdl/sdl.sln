@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_sdl_simple_wrapper", "02_sdl_simple_wrapper\02_sdl_simple_wrapper.vcxproj", "{C83CD174-CD6C-4C22-B964-287130A15DF7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_sdl_simple", "01_sdl_simple\01_sdl_simple.vcxproj", "{935AE25A-F42F-4380-BC4D-01BC6CF4800B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_sdl_opencv", "03_sdl_opencv\03_sdl_opencv.vcxproj", "{06266E95-A80E-445A-9592-974EBC1DDF47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C83CD174-CD6C-4C22-B964-287130A15DF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C83CD174-CD6C-4C22-B964-287130A15DF7}.Debug|Win32.Build.0 = Debug|Win32
+		{C83CD174-CD6C-4C22-B964-287130A15DF7}.Release|Win32.ActiveCfg = Release|Win32
+		{C83CD174-CD6C-4C22-B964-287130A15DF7}.Release|Win32.Build.0 = Release|Win32
+		{935AE25A-F42F-4380-BC4D-01BC6CF4800B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{935AE25A-F42F-4380-BC4D-01BC6CF4800B}.Debug|Win32.Build.0 = Debug|Win32
+		{935AE25A-F42F-4380-BC4D-01BC6CF4800B}.Release|Win32.ActiveCfg = Release|Win32
+		{935AE25A-F42F-4380-BC4D-01BC6CF4800B}.Release|Win32.Build.0 = Release|Win32
+		{06266E95-A80E-445A-9592-974EBC1DDF47}.Debug|Win32.ActiveCfg = Debug|Win32
+		{06266E95-A80E-445A-9592-974EBC1DDF47}.Debug|Win32.Build.0 = Debug|Win32
+		{06266E95-A80E-445A-9592-974EBC1DDF47}.Release|Win32.ActiveCfg = Release|Win32
+		{06266E95-A80E-445A-9592-974EBC1DDF47}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
