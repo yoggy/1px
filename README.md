@@ -10,3 +10,9 @@ rule
 * (2) Draw a 1px dot to (100, 100).
 * (3) Change the color every 250ms.
 * (4) The drawing result image is visible in realtime.
+
+
+inspired by
+--
+* The Hello World Collection
+  * http://helloworldcollection.de/
