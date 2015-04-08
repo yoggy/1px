@@ -10,10 +10,12 @@
 //     http://opensource.org/licenses/mit-license.php
 //
 // usage:
-//   $ sudo apt-get install build-essential
-//   $ sudo apt-get install libgtk-3-dev
-//   $ make
-//   $ ./1px-gtk
+//     $ sudo apt-get install build-essential
+//     $ sudo apt-get install libgtk-3-dev
+//     $ git clone https://github.com/yoggy/1px.git
+//     $ cd 1px/gtk/
+//     $ make
+//     $ ./1px-gtk
 //
 #include <gtk/gtk.h>
 #include <stdlib.h>
