@@ -1,0 +1,44 @@
+;
+; 1px.hsp - 1px HSP version
+; 
+; github:
+;     https://github.com/yoggy/1px
+;
+; license:
+;     Copyright (c) 2015 yoggy <yoggy0@gmail.com>
+;     Released under the MIT license
+;     http://opensource.org/licenses/mit-license.php;
+;
+
+screen 0, 200, 200
+title "1px - HSP version"
+
+cls 4
+
+onkey *key
+
+repeat
+	color 255,0,0
+	pset 100,100
+	
+	wait 25
+	
+	color 0,255,0
+	pset 100,100
+	
+	wait 25
+	
+	color 0,0,255
+	pset 100,100
+	
+	wait 25
+	
+	color 0,0,0
+	pset 100,100
+	
+	wait 25
+loop
+
+*key		
+	if iparam = 27 : end
+	stop
