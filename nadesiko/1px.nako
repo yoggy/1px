@@ -1,0 +1,41 @@
+#
+# 1px.nako - 1px nadesiko version
+# 
+# reference:
+#     Nadesiko - Japanese Programming Language
+#     http://nadesi.com/ 
+#
+# github:
+#     https://github.com/yoggy/1px
+#
+# license:
+#     Copyright (c) 2015 yoggy <yoggy0@gmail.com>
+#     Released under the MIT license
+#     http://opensource.org/licenses/mit-license.php;
+#
+
+母艦について 
+    W=300。H=300。
+
+母艦を中央移動
+
+母艦でキー押された時は
+    もし母艦で押された仮想キーが27ならば
+        終わる
+
+線太さは0
+塗りスタイルは黒
+『0,0
+200,0
+200,200
+0,200』で多角形
+
+オンの間
+    100,100へ赤色を点描画
+    0.25秒待つ
+    100,100へ緑色を点描画
+    0.25秒待つ
+    100,100へ青色を点描画
+    0.25秒待つ
+    100,100へ黒色を点描画
+    0.25秒待つ
