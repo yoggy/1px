@@ -1,0 +1,26 @@
+memo
+====
+Animatorを使った1pxの点滅。
+
+まず1px.pngをSpritesに取り込んだ後、SpriteモードをMultipleに設定したあと、
+Sprite Editorを使って赤緑青黒を表示するときの領域を200x200づつ切り出す。
+
+1px.pngをスプライトとしてシーンに追加する。
+
+次にキーフレームアニメーションを追加する。
+Window->AnimationでAnimationビューを開いた後、
+[Create New Clip]から新規Animationを作成。(1px_anim.anim)
+
+Add Property->Sprite Renderer->Spriteを選択して、
+1px_animにスプライトを差し替えるトラック(?)を追加。
+
+250ms毎に画像を入れ替えるので、AnimationのSample数を4に設定。
+
+Project viewにあるAssets->Spritesにある画像(multipleで指定した領域)を
+トラックにドラッグ&ドロップするとキーフレームを追加できる。
+
+最後に作成したアニメーションをSpriteにドラッグ&ドロップして
+Spriteにアニメーションを適用する。
+
+  * Controller(1px_anim.anim) -> Animator -> Spriteの関係ができる。
+
