@@ -1,10 +1,6 @@
 memo
 ====
-<<<<<<< HEAD
 ShaderLabを使った1pxの点滅。
-=======
-SharderLabを使った1pxの点滅。
->>>>>>> origin/master
 
 参考にしたのはここ。
 
@@ -17,13 +13,6 @@ SharderLabを使った1pxの点滅。
   * Unity - Manual: Built-in shader variables
     * http://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
 
-<<<<<<< HEAD
 Shader単体では何も描画できないので、SpriteのMaterialとして設定。
 
   * 1px_shader -> 1px_material -> 1px_spriteのmaterial rendererにmaterialを設定
-=======
-Sharder単体では何も描画できないので、SpriteのMaterialとして設定。
-
-  * 1px_sharder -> 1px_material -> 1px_spriteのmaterial rendererに設定
->>>>>>> origin/master
-
