@@ -1,0 +1,12 @@
+memo
+====
+Spriteをデフォルト設定で表示すると、アンチエイリアシングが
+かかってしまって1ピクセルがくっきり表示されない。
+
+そこで、Spriteに対して次の設定を行うことで
+アンチエイリアシングを無効にする。
+
+  * ProjectビューからAssets->Spritesフォルダを開く
+  * Scriptsフォルダの中にある1pxを選択
+  * Inspectorに"1px Import Settings"が表示される
+  * Filter Modeを"Bilinear"から"Point"に変更
