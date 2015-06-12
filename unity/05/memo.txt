@@ -1,0 +1,33 @@
+memo
+====
+白い箱に対してRGBのライトを順に当てて
+むりやり1pxアニメーションさせる例。
+
+
+ライティングの注意点メモ
+----
+Unityはデフォルト設定でEnvironment Lightingが有効になっているため、
+ライトを全部消した状態でも薄暗くオブジェクトが表示されてしまう。
+
+Environment Lightingを無効にするためには次の設定を行う
+
+* Unity 5の場合
+  * メニューのWindow->Lightingを選択
+  * Sceneタブを選択
+  * Environment Lightingの項目にある"Ambient Intensity"を0に設定する
+
+* Unity 4の場合
+  * メニューのEdit->RenderSettingsを選択
+  * "Ambient Light"を黒に設定する。
+
+
+アンチエイリアシングを無効にする設定
+----
+デフォルトではアンチエイリアシングが有効になっているので、
+遠くにある箱がぼけて見えてしまう。
+
+そこで次の手順でアンチエイリアシングを無効に設定しておく
+
+  * メニューのEdit->Project Settings->Qualityを選択
+  * Rendering項目の中にある"Anti Aliasing"をDisabledに設定する。
+
