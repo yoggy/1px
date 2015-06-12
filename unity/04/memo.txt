@@ -1,0 +1,72 @@
+memo
+====
+ImageEffects+ShaderLabを使った1pxの点滅。
+
+03のshaderをカメラ画像に適用するImageEffectsの応用編。
+
+参考
+----
+  * Unity - スクリプトリファレンス:
+    * http://docs.unity3d.com/ja/current/ScriptReference/MonoBehaviour.OnRenderImage.html
+
+  * Unityのポストエフェクトで遊ぶ！
+    * http://www.slideshare.net/calmbooks/unity-38485570 
+  
+  * Unity - Manual: Vertex and Fragment Shader Examples
+    * http://docs.unity3d.com/Manual/SL-VertexFragmentShaderExamples.html
+
+設定とかメモ
+----
+1px_shaderは03のサンプルと同じ。
+1px_materialを作成し、shaderを1px_shaderを設定。
+
+次に以下のImageEffect1px.csを作成する。
+
+    
+    using UnityEngine;
+    using System.Collections;
+    
+    public class ImageEffect1px : MonoBehaviour {
+    
+    public Material material;
+        
+        void OnRenderImage ( RenderTexture src, RenderTexture dest ) {
+            Graphics.Blit(src, dest, material);
+        }
+    }
+    
+
+OnRenderImage()は最終的なテクスチャの描画をフックできるメソッド。
+カメラに適用した場合は、シーンをオフスクリーンレンダリングした後に呼び出される。
+ImageEffect1px.csをカメラに適用後、、materialに1px_materialを設定しておくと、
+カメラの描画結果に対して、1px_shaderを適用することができる。
+
+処理の流れとしては以下のイメージ。
+
+  * カメラ画像をオフスクリーンレンダリング->OnRenderImage()でshader適用->実際に画面に表示される
+
+
+おまけ
+----
+GameObjectを非表示にする方法メモ。
+  * シーン中にでっかくTextを配置していて、実際の描画からは除外している
+
+その1
+  * GameObjectのRendererを無効にする。
+  * ただし、この方法はUpdate()は呼び出されるので、透明オブジェクト扱い。
+  
+    void Start () 
+    {
+        GetComponent<Renderer>().enabled = false;
+    }
+
+その2
+  * gameObject.SetActiveRecursively(false)を設定する。
+  * シーン描画のトラバースを行うかどうかのフラグ
+  * この方法はUpdate()が呼び出されなくなる。
+  
+    void Start () 
+    {
+        GetComponent<Renderer>().enabled = false;
+    }
+
