@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>1px - D3.js version</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	<script type="text/javascript">
+		var count = 0;
+		var svg;
+		var pixel;
+
+		function init(){
+			setInterval(draw, 250);
+			svg = d3.select("#canvas");
+
+			// pixel
+			pixel = svg.append("rect")
+				.attr("id", "pixel")
+	  	    	.attr("x", 100)
+		    	.attr("y", 100)
+		    	.attr("width", 1)
+		    	.attr("height", 1)
+		    	.style("fill", d3.rgb(255, 0, 0));
+		}
+
+		function draw() {
+		    // pixel
+			var n = count % 4;
+			switch(n) {
+			case 0:
+				pixel.style("fill", d3.rgb(255, 0, 0));
+				break;
+			case 1:
+				pixel.style("fill", d3.rgb(0, 255, 0));
+				break;
+			case 2:
+				pixel.style("fill", d3.rgb(0, 0, 255));
+				break;
+			case 3:
+				pixel.style("fill", d3.rgb(0, 0, 0));
+				break;
+			}
+			count ++;
+		}
+	</script>
+	<svg id="canvas" width="200px" height="200px" enable-background="new 0 0 0 0">
+		<!-- background panel -->
+		<rect x="0" y="0" width="200" height="200" fill="#000000"/>
+	</svg>
+</head>
+<body onLoad="init()">
+</body>
+</html>
