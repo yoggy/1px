@@ -4,7 +4,7 @@ Drawing a 1px dot in various environments.
 
 * ![https://farm8.staticflickr.com/7604/16748483689_57cd517588_o.png](https://farm8.staticflickr.com/7604/16748483689_57cd517588_o.png)
 
-Minimal sense of self-agency in the computer world.
+Minimal sense of self-agency in the cyberspace.
 
 Rule
 ----
