@@ -14,13 +14,13 @@ proc draw {} {
     set c [expr {$::frame_count % 4}]
     
     if {$c == 0} {
-        .can create line 100 100 101 101 -fill #ff0000
+        .can create line 100 100 101 100 -fill #ff0000
     } elseif {$c == 1} {
-        .can create line 100 100 101 101 -fill #00ff00
+        .can create line 100 100 101 100 -fill #00ff00
     } elseif {$c == 2} {
-        .can create line 100 100 101 101 -fill #0000ff
+        .can create line 100 100 101 100 -fill #0000ff
     } elseif {$c == 3} {
-        .can create line 100 100 101 101 -fill #000000
+        .can create line 100 100 101 100 -fill #000000
     }
     
     puts $::frame_count
