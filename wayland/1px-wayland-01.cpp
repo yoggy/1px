@@ -1,5 +1,5 @@
 //
-// 1px-wayland-01.c - 1px wayland version
+// 1px-wayland-01.cpp - 1px wayland version
 //
 // reference:
 //     https://github.com/wayland-project/weston/blob/master/clients/simple-shm.c
