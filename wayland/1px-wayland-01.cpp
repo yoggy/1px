@@ -41,7 +41,7 @@ uint64_t st;
 uint64_t get_current_millis()
 {
     struct timespec spec;
-    clock_gettime(CLOCK_REALTIME, &spec);
+    clock_gettime(CLOCK_MONOTONIC, &spec);
 
     uint64_t t;
     t  = spec.tv_sec * 1000;
