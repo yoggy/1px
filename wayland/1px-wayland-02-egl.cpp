@@ -9,6 +9,8 @@
 #include <EGL/egl.h>
 #include <GLES2/gl2.h>
 
+#include <linux/input.h>
+
 #include <poll.h>
 #include <fcntl.h>
 #include <sys/mman.h>
@@ -26,12 +28,16 @@ struct wl_surface       *surface       = NULL;
 struct wl_shell         *shell         = NULL;
 struct wl_shell_surface *shell_surface = NULL;
 struct wl_shm           *shm           = NULL;
+struct wl_seat          *seat          = NULL;
+struct wl_keyboard      *keyboard      = NULL;
 
 EGLDisplay     egl_display;
 EGLContext     egl_context;
 EGLConfig      egl_config;
 EGLSurface     egl_surface;
 wl_egl_window* egl_window = NULL;
+
+bool break_flag = false;
 
 int WIDTH  = 200;
 int HEIGHT = 200;
@@ -73,6 +79,53 @@ static const struct wl_shell_surface_listener shell_surface_listener = {
     handle_popup_done
 };
 
+static void keyboard_handle_keymap(void *data, struct wl_keyboard *keyboard, uint32_t format, int fd, uint32_t size)
+{
+}
+
+static void keyboard_handle_enter(void *data, struct wl_keyboard *keyboard, uint32_t serial, struct wl_surface *surface, struct wl_array *keys)
+{
+}
+
+static void keyboard_handle_leave(void *data, struct wl_keyboard *keyboard, uint32_t serial, struct wl_surface *surface)
+{
+}
+
+static void keyboard_handle_key(void *data, struct wl_keyboard *keyboard, uint32_t serial, uint32_t time, uint32_t key, uint32_t state)
+{
+	if (key == KEY_ESC && state) {
+        break_flag = true;
+	}
+}
+
+static void keyboard_handle_modifiers(void *data, struct wl_keyboard *keyboard, uint32_t serial, uint32_t mods_depressed, uint32_t mods_latched, uint32_t mods_locked, uint32_t group)
+{
+}
+
+static const struct wl_keyboard_listener keyboard_listener = {
+	keyboard_handle_keymap,
+	keyboard_handle_enter,
+	keyboard_handle_leave,
+	keyboard_handle_key,
+	keyboard_handle_modifiers,
+};
+
+static void seat_handle_capabilities(void *data, struct wl_seat *seat, uint32_t caps)
+{
+	if ((caps & WL_SEAT_CAPABILITY_KEYBOARD) && !keyboard) {
+		keyboard = wl_seat_get_keyboard(seat);
+		wl_keyboard_add_listener(keyboard, &keyboard_listener, NULL);
+	} 
+	else if (!(caps & WL_SEAT_CAPABILITY_KEYBOARD) && keyboard) {
+		wl_keyboard_destroy(keyboard);
+		keyboard = NULL;
+	}
+}
+
+static const struct wl_seat_listener seat_listener = {
+    seat_handle_capabilities,
+};
+
 static void global_registry_handler(void *data, struct wl_registry *registry, uint32_t id, const char *interface, uint32_t version)
 {
     std::string interface_str = interface;
@@ -84,6 +137,10 @@ static void global_registry_handler(void *data, struct wl_registry *registry, ui
     }
     else if (interface_str == "wl_shm") {
         shm = (wl_shm*)wl_registry_bind(registry, id, &wl_shm_interface, 1);
+    }
+    else if (interface_str == "wl_seat") {
+        seat = (wl_seat*)wl_registry_bind(registry, id, &wl_seat_interface, 1);
+        wl_seat_add_listener(seat, &seat_listener, NULL);
     }
 }
 
@@ -361,6 +418,10 @@ void teardown()
 {
     teardown_gl_resource();
 
+    if (seat) {
+        wl_seat_destroy(seat);
+        seat = NULL;
+    }
     if (shm) {
         wl_shm_destroy(shm);
         shm = NULL;
@@ -405,7 +466,7 @@ int main(int argc, char **argv)
     setup();
 
     pollfd fds[] = {{wl_display_get_fd(display), POLLIN},};
-    while(true) {
+    while(break_flag == false) {
         while(wl_display_prepare_read(display) != 0 ) {
             wl_display_dispatch_pending(display);
         }
