@@ -1,0 +1,8 @@
+*.swp
+*~
+.DS_Store
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+1px-libsixel

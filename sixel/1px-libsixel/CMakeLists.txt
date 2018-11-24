@@ -1,0 +1,6 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+PROJECT(1px-libsixel)
+
+ADD_EXECUTABLE(1px-libsixel main.c)
+TARGET_LINK_LIBRARIES(1px-libsixel sixel)
+
